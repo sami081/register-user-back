@@ -2,7 +2,7 @@
 const express = require('express');
 const db = require('./config/db');
 const cors = require('cors');
-const { createUser, getAllUsers, modifyUser } = require('./controllers/userControllers');
+const { createUser, getAllUsers, modifyUser, deleteUser } = require('./controllers/userControllers');
 
 const app = express();
 
@@ -22,6 +22,7 @@ app.use(cors(corsOptions)); // Utiliser les options CORS
 app.post('/users', createUser);
 app.get('/users', getAllUsers);
 app.put('/users/:id', modifyUser);
+app.delete('/users/:id', deleteUser);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
