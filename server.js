@@ -11,12 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 // Optionnel: Configurer CORS pour des origines spécifiques
 
 const corsOptions = {
-  origin: 'https://client-list-rose.vercel.app/', // Remplacez par l'URL de votre frontend
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
+  origin: 'https://client-list-rose.vercel.app', // Autoriser uniquement ce domaine
+  methods: 'GET,POST,PUT,DELETE', // Méthodes HTTP autorisées
+  allowedHeaders: 'Content-Type,Authorization', // En-têtes autorisés
 };
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // Utiliser les options CORS
 
 
 app.post('/users', createUser);
