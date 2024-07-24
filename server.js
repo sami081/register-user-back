@@ -21,7 +21,7 @@ app.use(cors(corsOptions)); // Utiliser les options CORS
 
 app.post('/users', createUser);
 app.get('/users', getAllUsers);
-app.put('/:id', modifyUser);
+app.put('/users/:id', modifyUser);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
