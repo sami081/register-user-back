@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 // Optionnel: Configurer CORS pour des origines spécifiques
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Remplacez par l'URL de votre frontend
+  origin: 'https://client-list-rose.vercel.app/', // Remplacez par l'URL de votre frontend
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 };
