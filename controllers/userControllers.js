@@ -35,5 +35,27 @@ const getAllUsers = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
+  const modifyUser = async (req, res)=> {
+    try {
+      const { id } = req.params;
+      const { surname, firstname, email, phone, dateOfBirth } = req.body;
+  
+      // Trouver et mettre à jour l'utilisateur
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        { surname, firstname, email, phone, dateOfBirth },
+        { new: true, runValidators: true }
+      );
+  
+      // Vérifier si l'utilisateur existe
+      if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
 
-module.exports = { createUser, getAllUsers };
+module.exports = { createUser, getAllUsers, modifyUser };
