@@ -10,7 +10,7 @@ const {
 } = require("./controllers/userControllers");
 
 const app = express();
-db.connect()
+db();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,4 +32,4 @@ const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-module.exports = {app, server} 
+module.exports = { app, server };
