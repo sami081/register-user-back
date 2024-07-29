@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: "https://register-g136r6fuw-sami081s-projects.vercel.app/",
+  origin: "https://register-wo5f.vercel.app/",
   methods: ["GET,POST,PUT,DELETE"],
   allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
   credentials: true // Permet les informations d'identification
