@@ -17,11 +17,14 @@ app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
   origin: "https://register-g136r6fuw-sami081s-projects.vercel.app/",
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
+  methods: ["GET,POST,PUT,DELETE"],
+  allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+  credentials: true // Permet les informations d'identification
 };
 
 app.use(cors(corsOptions));
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.post("/users", createUser);
 app.get("/users", getAllUsers);
