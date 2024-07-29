@@ -1,5 +1,6 @@
+require('dotenv').config();
 const express = require("express");
-const db = require("./config/db");
+const connectDB = require("./config/db");
 const cors = require("cors");
 const {
   createUser,
@@ -9,7 +10,8 @@ const {
 } = require("./controllers/userControllers");
 
 const app = express();
-db();
+connectDB();  // Appel de la fonction pour se connecter à MongoDB
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
