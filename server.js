@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const db = require("./config/db");
 const cors = require("cors");
@@ -28,8 +27,8 @@ app.put("/users/:id", modifyUser);
 app.delete("/users/:id", deleteUser);
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-module.exports = { app, server };
+module.exports = app;
