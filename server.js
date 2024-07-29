@@ -15,16 +15,22 @@ connectDB();  // Appel de la fonction pour se connecter à MongoDB
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 const corsOptions = {
-  origin: "https://register-wo5f.vercel.app/",
-  methods: ["GET,POST,PUT,DELETE"],
-  allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
-  credentials: true // Permet les informations d'identification
+  origin: "https://register-wo5f.vercel.app", // Remplacez par l'URL de votre frontend
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
 };
 
 app.use(cors(corsOptions));
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+
+// Middleware to add headers for CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://register-wo5f.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  next();
+});
 
 app.post("/users", createUser);
 app.get("/users", getAllUsers);
