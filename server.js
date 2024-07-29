@@ -10,7 +10,7 @@ const {
 } = require("./controllers/userControllers");
 
 const app = express();
-
+db.connect()
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
