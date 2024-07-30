@@ -19,10 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
   origin: "https://register-wo5f.vercel.app", // Remplacez par l'URL de votre frontend
   methods: "GET,POST,PUT,DELETE,OPTIONS",
-  // allowedHeaders: "Content-Type,Authorization",
+  allowedHeaders: "Content-Type,Authorization",
   optionsSuccessStatus: 200, // Pour résoudre les problèmes avec certains navigateurs
 };
-//testes
 
 app.use(cors(corsOptions));
 
@@ -37,8 +36,13 @@ app.put("/users/:id", modifyUser);
 app.delete("/users/:id", deleteUser);
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
 
-module.exports = { app, server };
+// Assurez-vous d'exporter le serveur correctement
+module.exports = app;
+
+// Démarrez le serveur uniquement si ce script est exécuté directement (pas lors de l'importation)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
