@@ -24,14 +24,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Middleware to add headers for CORS
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://register-wo5f.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  next();
-});
-
+// Les routes de votre application
 app.post("/users", createUser);
 app.get("/users", getAllUsers);
 app.get("/users/:id", getOneUser); 
