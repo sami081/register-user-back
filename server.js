@@ -18,21 +18,20 @@ app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
   origin: "https://register-wo5f.vercel.app", // Remplacez par l'URL de votre frontend
-  methods: "GET,POST,PUT,DELETE",
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type,Authorization",
-  optionsSuccessStatus: 204,
-  preflightContinue: false,
+  optionsSuccessStatus: 200, // Pour résoudre les problèmes avec certains navigateurs
 };
 
 app.use(cors(corsOptions));
 
-// Répondre aux requêtes préflight (OPTIONS) pour toutes les routes
+// Répondre explicitement aux requêtes préflight (OPTIONS)
 app.options("*", cors(corsOptions));
 
 // Les routes de votre application
 app.post("/users", createUser);
 app.get("/users", getAllUsers);
-app.get("/users/:id", getOneUser);
+app.get("/users/:id", getOneUser); 
 app.put("/users/:id", modifyUser);
 app.delete("/users/:id", deleteUser);
 
