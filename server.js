@@ -22,7 +22,7 @@ const corsOptions = {
   // allowedHeaders: "Content-Type,Authorization",
   optionsSuccessStatus: 200, // Pour résoudre les problèmes avec certains navigateurs
 };
-//test
+//testes
 
 app.use(cors(corsOptions));
 
