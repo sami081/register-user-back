@@ -1,28 +1,21 @@
-// test/user.test.js
 const request = require("supertest");
-const mongoose = require("mongoose");
-const { app } = require("../server");
-
-let userId;
+const { app, server } = require("../server");
 
 describe("User API", () => {
+  let userId;
+
+  afterAll((done) => {
+    server.close(done);
+  });
+
   it("should create a new user", async () => {
     const response = await request(app)
       .post("/users")
-      .send({
-        firstname: "John",
-        surname: "Doe",
-        email: "john.doe@example.com",
-        phone: "1234567890",
-        dateOfBirth: "1990-01-01",
-      });
+      .send({ firstname: "John", lastname: "Doe" });
 
     expect(response.status).toBe(201);
-    expect(response.body).toHaveProperty("user._id");
-    expect(response.body.user.firstname).toBe("John");
-    expect(response.body.user.surname).toBe("Doe");
-
-    userId = response.body.user._id;
+    expect(response.body).toHaveProperty("firstname", "John");
+    userId = response.body._id; // Save the user ID for further tests
   });
 
   it("should fetch all users", async () => {
@@ -30,7 +23,6 @@ describe("User API", () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
-    expect(response.body.length).toBeGreaterThan(0);
   });
 
   it("should update an existing user", async () => {

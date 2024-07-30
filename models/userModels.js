@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   phone: {
-    type: String,
+    type: Number,
     required: true,
   },
 
@@ -24,6 +24,28 @@ const userSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  adressNumber: {
+    type: String,
+    required: true,
+  },
+  addressType: {
+    type: String,
+    enum: ['Rue', 'Impasse', 'Allée', 'Avenue', 'Boulevard', 'Voie'], // Liste des options possibles
+    required: true,
+  },
+  adressName: {
+    type: String,
+    required: true,
+  },
+
+  ZIPCode: {
+    type: Number,
+    required: true,
+  },
+  city: {
+    type: String,
+    required : true
+  }
 });
 
 const User = mongoose.model("User", userSchema);
