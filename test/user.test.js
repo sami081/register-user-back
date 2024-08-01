@@ -41,7 +41,7 @@ describe('PUT /usersF/:id', () => {
       city: 'Sample City',
       ZIPCode: '12345',
       adressName: 'tes',
-      addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+      addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
       adressNumber: '123',
       dateOfBirth: "08/11/1987",
       phone: '1234567890',
@@ -83,7 +83,7 @@ describe('PUT /usersF/:id', () => {
       city: 'Sample City',
       ZIPCode: '12345',
       adressName: 'test',
-      addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+      addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
       adressNumber: '123',
       dateOfBirth: "08/11/1987",
       phone: '1234567890',
@@ -111,7 +111,7 @@ describe('DELETE /users/:id', () => {
       city: 'Sample City',
       ZIPCode: '12345',
       adressName: 'test',
-      addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+      addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
       adressNumber: '123',
       dateOfBirth: "08/11/1987",
       phone: '1234567890',
@@ -147,7 +147,7 @@ describe('DELETE /users/:id', () => {
       city: 'Sample City',
       ZIPCode: '12345',
       adressName: 'test',
-      addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+      addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
       adressNumber: '123',
       dateOfBirth: "08/11/1987",
       phone: '1234567890',
@@ -173,7 +173,7 @@ describe('GET /users/:id', () => {
       city: 'Sample City',
       ZIPCode: '12345',
       adressName: 'test',
-      addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+      addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
       adressNumber: '123',
       dateOfBirth: "08/11/1987",
       phone: '1234567890',
@@ -221,7 +221,7 @@ describe('GET /users', () => {
         city: 'Sample City',
         ZIPCode: '12345',
         adressName: 'test',
-        addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+        addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
         adressNumber: '123',
         dateOfBirth: "08/11/1987",
         phone: '1234567890',
@@ -235,7 +235,7 @@ describe('GET /users', () => {
         city: 'Another City',
         ZIPCode: '67890',
         adressName: 'test',
-        addressType: 'rue', // Assurez-vous que 'Work' est une valeur valide pour 'addressType'
+        addressType: 'Rue', // Assurez-vous que 'Work' est une valeur valide pour 'addressType'
         adressNumber: '456',
         dateOfBirth: "09/11/1987",
         phone: '0987654321',
@@ -276,7 +276,7 @@ describe('GET /users', () => {
         phone: '1234567890',
         dateOfBirth: "08/11/1987",
         adressNumber: '123',
-        addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+        addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
         adressName: 'test',
         ZIPCode: '12345',
         city: 'Sample City',
@@ -301,7 +301,7 @@ describe('GET /users', () => {
         phone: '1234567890',
         dateOfBirth: "08/11/1987",
         adressNumber: '123',
-        addressType: 'rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
+        addressType: 'Rue', // Assurez-vous que 'Home' est une valeur valide pour 'addressType'
         adressName: 'test',
         ZIPCode: '12345',
         // city est manquant
@@ -323,7 +323,7 @@ describe('GET /users', () => {
         phone: '1234567890',
         dateOfBirth: "08/11/1987",
         adressNumber: '123',
-        addressType: 'rue', 
+        addressType: 'Rue', 
         adressName: 'test',
         ZIPCode: '12345',
         city: 'Sample City',
@@ -349,7 +349,7 @@ describe('GET /users', () => {
         phone: '1234567890',
         dateOfBirth: "08/11/1987",
         adressNumber: '123',
-        addressType: 'rue',
+        addressType: 'Rue',
         adressName: 'test',
         ZIPCode: '12345',
         city: 'Sample City',
