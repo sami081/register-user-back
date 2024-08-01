@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
   },
   addressType: {
     type: String,
-    enum: ['rue', 'impasse', 'allée', 'avenue', 'boulevard', 'Voie'], // Liste des options possibles
+    enum: ['Rue', 'Impasse', 'Allée', 'Avenue', 'Boulevard', 'Voie'], // Liste des options possibles
     required: true,
   },
   adressName: {

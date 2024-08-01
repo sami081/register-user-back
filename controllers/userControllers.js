@@ -18,6 +18,7 @@ const createUser = async (req, res) => {
     console.log("Request body", req.body);
 
     if (!validator.isEmail(email)) {
+      console.log("Invalid email address:", email);
       return res.status(400).json({ error: "Invalid email address" });
     }
 
@@ -74,7 +75,7 @@ const modifyUser = async (req, res) => {
   try {
     const { id } = req.params;
     const updateData = req.body;
-    
+
     const user = await User.findByIdAndUpdate(id, updateData, { new: true });
 
     if (!user) {
