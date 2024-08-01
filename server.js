@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
   origin: "https://register-wo5f.vercel.app", // Remplacez par l'URL de votre frontend
   methods: "GET,POST,PUT,DELETE,OPTIONS",
-  allowedHeaders: "Content-Type,Authorization",
+ credentials : true,
   optionsSuccessStatus: 200, // Pour résoudre les problèmes avec certains navigateurs
 };
 
