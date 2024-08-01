@@ -15,6 +15,7 @@ const createUser = async (req, res) => {
       ZIPCode,
       city,
     } = req.body;
+    console.log("Request body", req.body);
 
     if (!validator.isEmail(email)) {
       return res.status(400).json({ error: "Invalid email address" });
@@ -27,11 +28,12 @@ const createUser = async (req, res) => {
       !phone ||
       !dateOfBirth ||
       !adressNumber ||
-      !addressType||
+      !addressType ||
       !adressName ||
       !ZIPCode ||
       !city
     ) {
+      console.log("Missing required fields");
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -49,13 +51,16 @@ const createUser = async (req, res) => {
     });
 
     await newUser.save();
+    console.log("User created successfully");
     res
       .status(201)
       .json({ message: "User created successfully", user: newUser });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error("Error creating user:", error.message);
+    res.status(500).json({ error: error.message });
   }
 };
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -65,10 +70,11 @@ const getAllUsers = async (req, res) => {
   }
 };
 const modifyUser = async (req, res) => {
-  const { id } = req.params;
-  const updateData = req.body;
-
+  
   try {
+    const { id } = req.params;
+    const updateData = req.body;
+    
     const user = await User.findByIdAndUpdate(id, updateData, { new: true });
 
     if (!user) {
@@ -77,6 +83,7 @@ const modifyUser = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
+    console.error("Error updating user:", error.message);
     res
       .status(500)
       .json({ message: "Error updating user", error: error.message });
@@ -113,8 +120,16 @@ const getOneUser = async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching user", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching user", error: error.message });
   }
 };
 
-module.exports = { createUser, getAllUsers, modifyUser, deleteUser, getOneUser };
+module.exports = {
+  createUser,
+  getAllUsers,
+  modifyUser,
+  deleteUser,
+  getOneUser,
+};

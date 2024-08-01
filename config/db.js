@@ -46,3 +46,32 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
+// config/db.js
+// config/db.js
+// const mongoose = require('mongoose');
+
+// const connectDB = async () => {
+//   if (mongoose.connection.readyState === 0) {
+//     try {
+//       await mongoose.connect("mongodb+srv://sami:sami1987@crud.dndehun.mongodb.net/database", {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//       });
+//       console.log('Connected to MongoDB/database');
+//     } catch (err) {
+//       console.error('Failed to connect to MongoDB', err);
+//       process.exit(1);
+//     }
+//   }
+// };
+
+// const closeDB = async () => {
+//   if (mongoose.connection.readyState !== 0) {
+//     await mongoose.connection.dropDatabase();
+//     await mongoose.connection.close();
+//     console.log('Disconnected from MongoDB/database');
+//   }
+// };
+
+// module.exports = { connectDB, closeDB };

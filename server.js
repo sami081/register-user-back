@@ -30,10 +30,10 @@ app.options("*", cors(corsOptions));
 
 // Les routes de votre application
 app.post("/users", createUser);
-app.get("/users", getAllUsers);
-app.get("/users/:id", getOneUser); 
+app.get("/user", getAllUsers);
+app.get("/user/:id", getOneUser); 
 app.put("/users/:id", modifyUser);
-app.delete("/users/:id", deleteUser);
+app.delete("/user/:id", deleteUser);
 
 const PORT = process.env.PORT || 5000;
 
