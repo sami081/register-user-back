@@ -9,9 +9,9 @@ const { modifyUser, deleteUser, getOneUser, getAllUsers, createUser } = require(
 
 const app = express();
 app.use(express.json());
-app.put('/user/:id', modifyUser);
-app.delete('/user/:id', deleteUser);
-app.get('/user/:id', getOneUser);
+app.put('/users/:id', modifyUser);
+app.delete('/users/:id', deleteUser);
+app.get('/users/:id', getOneUser);
 app.get('/users', getAllUsers)
 app.post('/users', createUser);
 
@@ -33,7 +33,7 @@ beforeEach(async () => {
   await User.deleteMany({});
 });
 
-describe('PUT /user/:id', () => {
+describe('PUT /usersF/:id', () => {
   it('should update the user successfully', async () => {
     const user = new User({
       
@@ -52,7 +52,7 @@ describe('PUT /user/:id', () => {
 
     const updatedData = { surname: 'Doe' };
     const response = await request(app)
-      .put(`/user/${user._id}`)
+      .put(`/users/${user._id}`)
       .send(updatedData);
 
     console.log('Response body:', response.body); // Log the response body
@@ -65,7 +65,7 @@ describe('PUT /user/:id', () => {
     const fakeId = new mongoose.Types.ObjectId();
     const updatedData = { surname: 'Doe' };
     const response = await request(app)
-      .put(`/user/${fakeId}`)
+      .put(`/users/${fakeId}`)
       .send(updatedData);
 
     expect(response.status).toBe(404);
@@ -94,7 +94,7 @@ describe('PUT /user/:id', () => {
 
     const updatedData = { surname: 'Doe' };
     const response = await request(app)
-      .put(`/user/${user._id}`)
+      .put(`/users/${user._id}`)
       .send(updatedData);
 
     expect(response.status).toBe(500);
@@ -121,7 +121,7 @@ describe('DELETE /users/:id', () => {
     await user.save();
 
     const response = await request(app)
-      .delete(`/user/${user._id}`);
+      .delete(`/users/${user._id}`);
 
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('User deleted successfully');
@@ -130,7 +130,7 @@ describe('DELETE /users/:id', () => {
   it('should return 404 if user not found', async () => {
     const fakeId = new mongoose.Types.ObjectId();
     const response = await request(app)
-      .delete(`/user/${fakeId}`);
+      .delete(`/users/${fakeId}`);
 
     expect(response.status).toBe(404);
     expect(response.body.message).toBe('User not found');
@@ -157,7 +157,7 @@ describe('DELETE /users/:id', () => {
     await user.save();
 
     const response = await request(app)
-      .delete(`/user/${user._id}`);
+      .delete(`/users/${user._id}`);
 
     expect(response.status).toBe(500);
     expect(response.body.message).toBe('Error deleting user');
@@ -183,7 +183,7 @@ describe('GET /users/:id', () => {
     await user.save();
 
     const response = await request(app)
-      .get(`/user/${user._id}`);
+      .get(`/users/${user._id}`);
 
     expect(response.status).toBe(200);
     expect(response.body.surname).toBe('Doe');
@@ -193,7 +193,7 @@ describe('GET /users/:id', () => {
   it('should return 404 if user not found', async () => {
     const fakeId = new mongoose.Types.ObjectId();
     const response = await request(app)
-      .get(`/user/${fakeId}`);
+      .get(`/users/${fakeId}`);
 
     expect(response.status).toBe(404);
     expect(response.body.message).toBe('User not found');
@@ -206,7 +206,7 @@ describe('GET /users/:id', () => {
 
     const fakeId = new mongoose.Types.ObjectId();
     const response = await request(app)
-      .get(`/user/${fakeId}`);
+      .get(`/users/${fakeId}`);
 
     expect(response.status).toBe(500);
     expect(response.body.message).toBe('Error fetching user');
