@@ -16,18 +16,24 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = [
+  "https://register-wo5f.vercel.app",
+  "https://test-blue-five-23.vercel.app/"
+];
+
 const corsOptions = {
-  origin: "https://register-wo5f.vercel.app" || "https://test-blue-five-23.vercel.app/", // Remplacez par l'URL de votre frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-};
-const corsOptions2 = {
-  origin:  "https://test-blue-five-23.vercel.app/", // Remplacez par l'URL de votre frontend
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
 
-app.use(cors(corsOptions || corsOptions2));
+app.use(cors(corsOptions));
 
 // Répondre explicitement aux requêtes préflight (OPTIONS)
 
