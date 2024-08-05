@@ -17,12 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin:  "https://test-blue-five-23.vercel.app/", // Remplacez par l'URL de votre frontend
+  origin: "https://register-wo5f.vercel.app" , // Remplacez par l'URL de votre frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
 
-app.use(cors(corsOptions ));
+app.use(cors(corsOptions));
 
 // Répondre explicitement aux requêtes préflight (OPTIONS)
 
