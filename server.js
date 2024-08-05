@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: "https://register-wo5f.vercel.app" || "https://register-sami081-sami081s-projects.vercel.app", // Remplacez par l'URL de votre frontend
+  origin: "https://register-wo5f.vercel.app" || "https://test-blue-five-23.vercel.app/", // Remplacez par l'URL de votre frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
