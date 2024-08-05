@@ -21,8 +21,13 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
+const corsOptions2 = {
+  origin:  "https://test-blue-five-23.vercel.app/", // Remplacez par l'URL de votre frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions || corsOptions2));
 
 // Répondre explicitement aux requêtes préflight (OPTIONS)
 
